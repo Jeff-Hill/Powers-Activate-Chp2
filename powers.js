@@ -35,24 +35,30 @@ document.querySelector("#activate-xray").addEventListener("click", () => {
   xrayFunction();
 });
 
+const classEnabled = document.querySelectorAll(".enabled");
+const classDisabled = document.querySelectorAll(".disabled");
 
+function allPowersActivate() {
+  for (let i = 0; i < classDisabled.length; i++) {
+      classDisabled[i].classList.remove("disabled");
+      classDisabled[i].classList.add("enabled");
 
-// Exercise click one button to turn all power on
-// 1st define a variable that identified all the elements with the class of disabled
-const newClass = document.querySelectorAll(".disabled");
-
-// Declare a function that iterates through all of the classes that are now the value of the above variable
-// and add a new class of enabled to them
-function allPowersFunction() {
-  for (let i = 0; i < newClass.length; i++) {
-    newClass[i].className = "enabled";
   }
 }
 
-// Add an event listener of click to the "All Powers" that we want to turn on all the powers of the classes above
-// Call the function defined above so the iteration will take place and the elements will get a new class of enabled
-// added to them which will activate the power
-document.querySelector("#activate-all").addEventListener("click", event => {
-  console.log("button clicked");
-  allPowersFunction();
+function allPowersDeActivate() {
+    for (let i = 0; i < classDisabled; i++) {
+        classDisabled[i].classList.remove("enabled");
+        classDisabled[i].classList.add("disabled");
+    }
+}
+
+const powersOnButton = document.querySelector("#activate-all").addEventListener("click", () => {
+    console.log("button clicked");
+    allPowersActivate();
 });
+
+const powersOffButton = document.querySelector("#deactivate-all").addEventListener("click", () => {
+    console.log("button clicked");
+    allPowersDeActivate();
+  });
